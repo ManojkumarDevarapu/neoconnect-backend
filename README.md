@@ -1,81 +1,199 @@
-# NeoConnect Backend
+# NeoConnect Backend 
 
-Backend API for the **NeoConnect Complaint Management System**.
-This service handles authentication, complaint management, file uploads, and database operations.
+Backend service for the **NeoConnect Complaint Management System**.
+This API handles authentication, complaint management, polling, analytics, and database operations.
 
-## Overview
-
-NeoConnect backend is built using **Node.js and Express** with **MongoDB** as the database.
-It provides REST APIs that power the NeoConnect frontend dashboard and complaint submission system.
-
-The backend handles:
-
-* User authentication (JWT)
-* Complaint submission & management
-* File uploads
-* Admin complaint handling
-* Scheduled background tasks
-* Secure API communication
+The backend is built with **Node.js, Express, and MongoDB** and exposes REST APIs consumed by the NeoConnect frontend application.
 
 ---
 
-## Tech Stack
+# Project Overview
+
+NeoConnect is a **centralized complaint management platform** designed to help organizations collect, track, and resolve complaints efficiently.
+
+The backend provides:
+
+* Secure authentication system
+* Complaint case management
+* Poll and feedback collection
+* Time tracking for complaints
+* Analytics endpoints
+* User management
+* Database seeding utilities
+
+---
+
+# Tech Stack
+
+Backend technologies used:
 
 * **Node.js**
 * **Express.js**
 * **MongoDB**
 * **Mongoose**
 * **JWT Authentication**
-* **Bcrypt**
-* **Node Cron**
-* **Express File Upload**
+* **dotenv**
+* **REST API architecture**
 
 ---
 
-## Project Structure
+# Backend Architecture
+
+```text
+Client (Next.js Frontend)
+        │
+        ▼
+ REST API (Express Server)
+        │
+        ▼
+Controllers / Routes
+        │
+        ▼
+Mongoose Models
+        │
+        ▼
+MongoDB Database
+```
+
+---
+
+# Project Structure
 
 ```
 backend
 │
-├── server.js
-├── config
-│   └── db.js
-│
-├── controllers
-│   └── complaintController.js
+├── middleware
+│   └── auth.js            # JWT authentication middleware
 │
 ├── models
-│   └── Complaint.js
+│   ├── Case.js            # Complaint case schema
+│   ├── Minutes.js         # Meeting / tracking records
+│   ├── Poll.js            # Poll and voting schema
+│   └── User.js            # User schema
 │
 ├── routes
-│   └── complaintRoutes.js
+│   ├── analytics.js       # Dashboard analytics APIs
+│   ├── auth.js            # Authentication routes
+│   ├── cases.js           # Complaint management
+│   ├── hub.js             # Hub related operations
+│   ├── polls.js           # Polling routes
+│   └── users.js           # User management
 │
-├── middleware
-│   └── authMiddleware.js
-│
-├── utils
-│   └── helpers.js
-│
-└── .env.example
+├── .env.example           # Environment variable template
+├── seed.js                # Database seed script
+├── server.js              # Application entry point
+├── package.json
+└── .gitignore
 ```
 
 ---
 
-## Installation
+# Core Features
 
-Clone the repository:
+## Authentication
+
+Secure login system using **JWT tokens**.
+
+Features:
+
+* User registration
+* Login authentication
+* Protected routes
+* Token validation middleware
+
+---
+
+## Complaint Case Management
+
+Users can:
+
+* Create complaint cases
+* Track complaint progress
+* Update case status
+* View case history
+
+Admins can:
+
+* Manage cases
+* Update resolution status
+* Monitor complaints
+
+---
+
+## Polling System
+
+The system supports internal polls for decision making.
+
+Capabilities:
+
+* Create polls
+* Vote on options
+* Store results
+* Retrieve poll analytics
+
+---
+
+## Analytics API
+
+Provides data for dashboards such as:
+
+* Total complaints
+* Resolved complaints
+* Pending complaints
+* Poll statistics
+* User activity
+
+---
+
+## Database Models
+
+### User
+
+Stores user authentication and profile data.
+
+### Case
+
+Represents complaint cases submitted by users.
+
+### Poll
+
+Stores poll questions and responses.
+
+### Minutes
+
+Stores meeting minutes or activity logs.
+
+---
+
+# Environment Variables
+
+Create a `.env` file using `.env.example`.
+
+Example:
+
+```
+PORT=5000
+MONGO_URI=your_mongodb_connection
+JWT_SECRET=your_secret_key
+```
+
+---
+
+# Installation
+
+Clone the repository
 
 ```
 git clone https://github.com/yourusername/neoconnect-backend.git
 ```
 
-Navigate into the project:
+Navigate to project
 
 ```
 cd neoconnect-backend
 ```
 
-Install dependencies:
+Install dependencies
 
 ```
 npm install
@@ -83,29 +201,15 @@ npm install
 
 ---
 
-## Environment Variables
+# Running the Server
 
-Create a `.env` file based on `.env.example`.
-
-Example:
-
-```
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-```
-
----
-
-## Running the Server
-
-Development mode:
+Development
 
 ```
 npm run dev
 ```
 
-Production mode:
+Production
 
 ```
 npm start
@@ -119,60 +223,54 @@ http://localhost:5000
 
 ---
 
-## API Features
+# Database Seeding
 
-### Authentication
+Populate the database with sample data:
 
-* Secure JWT authentication
-* Password hashing with bcrypt
-
-### Complaint Management
-
-* Submit complaints
-* Track complaint status
-* Admin resolution updates
-
-### File Upload
-
-* Upload attachments related to complaints
-
-### Scheduled Jobs
-
-* Background tasks using **node-cron**
+```
+node seed.js
+```
 
 ---
 
-## Database
+# API Endpoints
 
-The backend uses **MongoDB** with **Mongoose ODM**.
+Main endpoints:
 
-Main collections may include:
-
-* Users
-* Complaints
-* Attachments
+```
+/api/auth
+/api/cases
+/api/users
+/api/polls
+/api/analytics
+/api/hub
+```
 
 ---
 
-## Security
+# Security
 
-* JWT token authentication
+Security practices implemented:
+
+* JWT authentication
 * Password hashing
 * Protected API routes
-* Environment-based secrets
+* Environment variable protection
 
 ---
 
-## Future Improvements
+# Future Improvements
+
+Possible enhancements:
 
 * Email notifications
-* Role-based access control
-* API rate limiting
-* Logging and monitoring
+* File attachments for complaints
+* Role based access control
+* Real-time updates using WebSockets
 * Microservice architecture
 
 ---
 
-## Author
+# Author
 
-Developed as part of the **NeoConnect Complaint Management System** project.
+Developed as part of the **NeoConnect Complaint Management System**.
