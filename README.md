@@ -1,7 +1,6 @@
-# NeoConnect Backend 
+# NeoConnect Backend
 
-Backend service for the **NeoConnect Complaint Management System**.
-This API handles authentication, complaint management, polling, analytics, and database operations.
+Backend service for the **NeoConnect Complaint Management System**. This API handles authentication, complaint management, polling, analytics, and database operations.
 
 The backend is built with **Node.js, Express, and MongoDB** and exposes REST APIs consumed by the NeoConnect frontend application.
 
@@ -23,23 +22,15 @@ The backend provides:
 
 ---
 
-# Tech Stack
-
-Backend technologies used:
-
-* **Node.js**
-* **Express.js**
-* **MongoDB**
-* **Mongoose**
-* **JWT Authentication**
-* **dotenv**
-* **REST API architecture**
-
----
-
 # Backend Architecture
 
-```text
+The backend serves as the **core service layer** connecting the frontend application to the database.
+
+![Backend Architecture](docs/screenshots/architecture.png)
+
+Architecture Flow:
+
+```
 Client (Next.js Frontend)
         │
         ▼
@@ -57,10 +48,28 @@ MongoDB Database
 
 ---
 
+# Tech Stack
+
+Backend technologies used:
+
+* **Node.js**
+* **Express.js**
+* **MongoDB**
+* **Mongoose**
+* **JWT Authentication**
+* **dotenv**
+* **REST API architecture**
+
+---
+
 # Project Structure
 
 ```
 backend
+│
+├── docs
+│   └── screenshots
+│       └── architecture.png
 │
 ├── middleware
 │   └── auth.js            # JWT authentication middleware
@@ -122,7 +131,7 @@ Admins can:
 
 ## Polling System
 
-The system supports internal polls for decision making.
+The system supports **internal polls** for decision making.
 
 Capabilities:
 
@@ -145,7 +154,7 @@ Provides data for dashboards such as:
 
 ---
 
-## Database Models
+# Database Models
 
 ### User
 
@@ -187,7 +196,7 @@ Clone the repository
 git clone https://github.com/yourusername/neoconnect-backend.git
 ```
 
-Navigate to project
+Navigate to the project
 
 ```
 cd neoconnect-backend
