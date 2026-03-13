@@ -1,5 +1,33 @@
 # NeoConnect Backend
 
+![Node.js](https://img.shields.io/badge/Node.js-Backend-green)
+![Express](https://img.shields.io/badge/Express-API-lightgrey)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-green)
+![JWT](https://img.shields.io/badge/JWT-Authentication-orange)
+![Mongoose](https://img.shields.io/badge/Mongoose-ODM-red)
+
+---
+
+## Project Repositories
+
+| Service  | Repository                                                |
+| -------- | --------------------------------------------------------- |
+| Frontend | https://github.com/ManojkumarDevarapu/neoconnect-frontend |
+| Backend  | https://github.com/ManojkumarDevarapu/neoconnect-backend  |
+
+---
+
+## Key Highlights
+
+* REST API backend for NeoConnect complaint management system
+* Role-based complaint and case management workflow
+* Secure authentication using JWT
+* Polling system for internal organizational feedback
+* Analytics APIs for dashboards and complaint statistics
+* MongoDB-based data persistence with Mongoose ODM
+
+---
+
 Backend service for the **NeoConnect Complaint Management System**. This API handles authentication, complaint management, polling, analytics, and database operations.
 
 The backend is built with **Node.js, Express, and MongoDB** and exposes REST APIs consumed by the NeoConnect frontend application.
@@ -30,7 +58,7 @@ The backend serves as the **core service layer** connecting the frontend applica
 
 Architecture Flow:
 
-```
+```text
 Client (Next.js Frontend)
         │
         ▼
@@ -64,7 +92,7 @@ Backend technologies used:
 
 # Project Structure
 
-```
+```text
 backend
 │
 ├── docs
@@ -180,7 +208,7 @@ Create a `.env` file using `.env.example`.
 
 Example:
 
-```
+```env
 PORT=5000
 MONGO_URI=your_mongodb_connection
 JWT_SECRET=your_secret_key
@@ -192,19 +220,19 @@ JWT_SECRET=your_secret_key
 
 Clone the repository
 
-```
+```bash
 git clone https://github.com/yourusername/neoconnect-backend.git
 ```
 
 Navigate to the project
 
-```
+```bash
 cd neoconnect-backend
 ```
 
 Install dependencies
 
-```
+```bash
 npm install
 ```
 
@@ -214,13 +242,13 @@ npm install
 
 Development
 
-```
+```bash
 npm run dev
 ```
 
 Production
 
-```
+```bash
 npm start
 ```
 
@@ -236,7 +264,7 @@ http://localhost:5000
 
 Populate the database with sample data:
 
-```
+```bash
 node seed.js
 ```
 
